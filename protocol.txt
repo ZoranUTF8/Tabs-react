@@ -1,0 +1,22 @@
+declare state to hold values
+ const [loading, setLoading] = useState(true);
+  const [jobs, setJobs] = useState([]);
+  const [value, setValue] = useState(0);
+
+
+declare a function to fetch data from source (API)
+//! function to get API data
+  const fetchJobs = async () => {
+    const response = await fetch(url);
+    const newJobs = await response.json();
+    setJobs(newJobs);
+    setLoading(false);
+  };
+
+  set useEffect to call function on initial render
+   //! run the function on inital render
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+
